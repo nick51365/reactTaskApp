@@ -40,6 +40,15 @@ class App extends Component{
     });
   };
 
+  deleteTask = (id) => {
+    const{tasks, taskCount} = this.state;
+    this.setState({
+      tasks: tasks.filter(task => task.id !== id),
+      taskCount: taskCount - 1
+    })
+    console.log(this.state)
+  }
+
   render(){
     const {task, tasks} = this.state;
 
@@ -56,7 +65,7 @@ class App extends Component{
 
               <input type="submit"></input>
             </form>
-            <Overview tasks={tasks}/>
+            <Overview tasks={tasks} deleteTask={this.deleteTask}/>
       </div>
     );
   }

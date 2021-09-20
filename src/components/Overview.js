@@ -6,9 +6,16 @@ class Overview extends Component {
         return(
             <div>
                 <h1>Tasks</h1>
-                <ul style={{ listStyleType: "none" }}>
+                <ul id="taskList" style={{ listStyleType: "none" }}>
                     {this.props.tasks.map(task => {
-                        return <li key={task.id}>{task.number}{". "}{task.text}</li>;
+                        return (
+                        <div key={task.id}>
+                            <li >{task.number}{"."}{task.text}</li>
+                            <button onClick={() => this.props.deleteTask(task.id)}>
+                                Delete Task
+                            </button>
+                        </div>
+                        );
                     })}
                 </ul>
             </div>
